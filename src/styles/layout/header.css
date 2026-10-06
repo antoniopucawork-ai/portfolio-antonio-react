@@ -1,0 +1,446 @@
+/* ==================================================
+   HEADER
+================================================== */
+
+.header {
+  position: fixed;
+
+  top: 1.5rem;
+  left: 50%;
+
+  z-index: 1000;
+
+  width: min(1350px, 92%);
+
+  transform: translateX(-50%);
+}
+
+.navbar {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  height: var(--header-height);
+
+  padding: 0 2.5rem;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 999px;
+
+  background: rgba(10, 10, 15, 0.42);
+
+  -webkit-backdrop-filter: blur(26px);
+  backdrop-filter: blur(26px);
+
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.28);
+
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.header.scrolled .navbar {
+  background: rgba(5, 5, 8, 0.75);
+
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
+}
+
+/* ------------------------------------------
+   LOGO
+------------------------------------------ */
+
+.logo {
+  display: flex;
+
+  align-items: center;
+  gap: 0.5rem;
+
+  flex-shrink: 0;
+
+  cursor: pointer;
+
+  color: var(--text);
+
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
+  transition: color var(--transition);
+}
+
+.logo__accent {
+  color: #ffe7ae;
+}
+
+.logo:hover .logo__accent {
+  color: #fff6d6;
+
+  text-shadow: 0 0 10px rgba(255, 230, 170, 0.45);
+}
+
+/* ------------------------------------------
+   NAVIGATION
+------------------------------------------ */
+
+.nav {
+  display: flex;
+
+  align-items: center;
+  gap: 3.4rem;
+}
+
+.nav-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+}
+
+/* ------------------------------------------
+   POLARIS
+------------------------------------------ */
+
+.polaris {
+  position: absolute;
+
+  left: 0;
+  bottom: -8px;
+
+  z-index: 5;
+
+  width: 24px;
+  height: 10px;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  transform: translateX(-50%);
+
+  will-change: left;
+
+  transition:
+    left 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity var(--transition);
+}
+
+.polaris::before {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+
+  transform: translateY(-50%);
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 248, 220, 0.25) 18%,
+    rgba(255, 248, 220, 0.8) 50%,
+    rgba(255, 248, 220, 0.25) 82%,
+    transparent
+  );
+}
+
+.polaris::after {
+  content: "✦";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -55%);
+
+  color: #fff8de;
+
+  font-size: 0.58rem;
+  line-height: 1;
+
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, 0.65),
+    0 0 8px rgba(255, 228, 165, 0.25);
+}
+
+/* ------------------------------------------
+   NAVIGATION LINKS
+------------------------------------------ */
+
+.nav-link {
+  display: flex;
+
+  align-items: center;
+  gap: 0.65rem;
+
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+
+  transition:
+    color var(--transition),
+    transform var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--white);
+
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
+  color: #ffffff;
+}
+
+/* ------------------------------------------
+   LANGUAGE SWITCHER
+------------------------------------------ */
+
+.language-switcher {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  gap: 0;
+
+  padding: 3px;
+
+  margin-left: 1.5rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.01),
+    0 8px 24px rgba(0, 0, 0, 0.12);
+
+  transition:
+    border-color var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+.language-switcher:hover {
+  border-color: rgba(255, 231, 174, 0.16);
+
+  background: rgba(255, 255, 255, 0.04);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.015),
+    0 8px 28px rgba(0, 0, 0, 0.16);
+}
+
+.language-switcher__indicator {
+  position: absolute;
+
+  top: 3px;
+  left: 3px;
+
+  width: 38px;
+  height: calc(100% - 6px);
+
+  border: 1px solid rgba(255, 231, 174, 0.13);
+  border-radius: 999px;
+
+  background:
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(255, 231, 174, 0.12),
+      transparent 72%
+    ),
+    rgba(255, 255, 255, 0.055);
+
+  box-shadow:
+    0 0 16px rgba(255, 231, 174, 0.05),
+    inset 0 0 12px rgba(255, 255, 255, 0.025);
+
+  pointer-events: none;
+
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.language-switcher--it .language-switcher__indicator {
+  transform: translateX(38px);
+}
+
+.language-switcher button {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 30px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 999px;
+
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.42);
+
+  cursor: pointer;
+
+  font-family: inherit;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  transition:
+    color var(--transition),
+    text-shadow var(--transition);
+}
+
+.language-switcher button:hover {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.language-switcher button.active {
+  color: #fff8de;
+
+  text-shadow:
+    0 0 7px rgba(255, 255, 255, 0.25),
+    0 0 11px rgba(255, 231, 174, 0.16);
+}
+
+/* ------------------------------------------
+   MOBILE MENU TOGGLE
+------------------------------------------ */
+
+.menu-toggle {
+  display: none;
+
+  position: relative;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+/* ==================================================
+   LANGUAGE SWITCHER — TABLET
+================================================== */
+
+@media (max-width: 1024px) {
+  .language-switcher {
+    margin-left: 1rem;
+  }
+
+  .language-switcher__indicator {
+    width: 34px;
+  }
+
+  .language-switcher--it .language-switcher__indicator {
+    transform: translateX(34px);
+  }
+
+  .language-switcher button {
+    width: 34px;
+  }
+}
+
+/* ==================================================
+   LANGUAGE SWITCHER — MOBILE
+================================================== */
+
+@media (max-width: 768px) {
+  .logo {
+    order: 1;
+  }
+
+  .nav-wrapper {
+    order: 4;
+  }
+
+  .language-switcher {
+    order: 2;
+
+    margin-right: 0.25rem;
+    margin-left: auto;
+
+    padding: 2px;
+
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .menu-toggle {
+    order: 3;
+  }
+
+  .language-switcher__indicator {
+    top: 2px;
+    left: 2px;
+
+    width: 32px;
+    height: calc(100% - 4px);
+  }
+
+  .language-switcher--it .language-switcher__indicator {
+    transform: translateX(32px);
+  }
+
+  .language-switcher button {
+    width: 32px;
+    height: 28px;
+
+    font-size: 0.62rem;
+    letter-spacing: 0.8px;
+  }
+}
+
+/* ==================================================
+   LANGUAGE SWITCHER — SMALL MOBILE
+================================================== */
+
+@media (max-width: 480px) {
+  .language-switcher {
+    margin-right: 0.1rem;
+  }
+
+  .language-switcher__indicator {
+    width: 29px;
+  }
+
+  .language-switcher--it .language-switcher__indicator {
+    transform: translateX(29px);
+  }
+
+  .language-switcher button {
+    width: 29px;
+    height: 27px;
+
+    font-size: 0.58rem;
+  }
+}

@@ -1,0 +1,17 @@
+/* ==================================================
+   BASE
+================================================== */
+
+body {
+  position: relative;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  background: var(--bg);
+  color: var(--text);
+
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+}
