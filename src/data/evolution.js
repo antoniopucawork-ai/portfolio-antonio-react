@@ -1,6 +1,6 @@
-import jessicaV1 from "../assets/images/jessica-v1.png";
-import jessicaV2 from "../assets/images/jessica-v2.png";
-import jessicaV3 from "../assets/images/jessica-v3.png";
+import jessicaV1 from "../assets/images/jessica-v1.webp";
+import jessicaV2 from "../assets/images/jessica-v2.webp";
+import jessicaV3 from "../assets/images/jessica-v3.webp";
 
 export const evolutionItems = [
   {

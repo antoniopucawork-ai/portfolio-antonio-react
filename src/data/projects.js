@@ -1,6 +1,6 @@
-import jessicaV3 from "../assets/images/jessica-v3.png";
-import fabiana from "../assets/images/fabiana-react.png";
-import airbnb from "../assets/images/airbnb-home.png";
+import jessicaV3 from "../assets/images/jessica-v3.webp";
+import fabiana from "../assets/images/fabiana-react.webp";
+import airbnb from "../assets/images/airbnb-home.webp";
 
 export const projects = [
   {

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import antonioHero from "../../assets/images/antonio-hero.jpg";
+import antonioHero from "../../assets/images/antonio-hero.webp";
 import { useLanguage } from "../../context/useLanguage";
 
 function Hero() {
