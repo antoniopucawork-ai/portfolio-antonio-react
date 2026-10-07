@@ -36,7 +36,7 @@ export const projects = [
     ],
     image: fabiana,
     alt: "Homepage del nuovo sito React di Fabiana Le Grottaglie",
-    url: "https://dottoressa-fabiana-le-grottagile.netlify.app/",
+    url: "https://dottoressafabianalegrottagile.netlify.app/",
     button: "Enter World →",
     modifier: "world-card--fabiana world-card--reverse",
   },
