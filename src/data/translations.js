@@ -79,40 +79,50 @@ export const translations = {
       scroll: "Keep exploring",
     },
 
-    projects: {
+projects: {
       label: "SELECTED PROJECTS",
       title: "Worlds I've built.",
-      lead: "Each project began with a different person, need and challenge. These are the digital worlds that shaped the way I design and build.",
+      lead: "Every world began with a challenge. Explore how I transformed different needs into meaningful digital experiences.",
 
       items: {
         1: {
           number: "World 01",
-          title: "Jessica Di Flumeri",
+          title: "Designing trust.",
           version: "Version 3.0 · Live",
-          category: "Psychologist Website · UX/UI Redesign",
+          category: "UX/UI Design · Web Development",
           description:
-            "The project that transformed the way I think about digital experiences. A complete redesign focused on trust, emotional clarity and meaningful user experience.",
-          button: "Enter World →",
+            "How can a digital experience communicate trust and empathy? A project focused on creating a welcoming, clear and thoughtful professional presence.",
+          button: "Explore the world →",
         },
 
         2: {
           number: "World 02",
-          title: "Fabiana Le Grottaglie",
+          title: "Shaping an identity.",
           version: "React Redesign · Live",
-          category: "Psychologist Website · React Development",
+          category: "UX/UI Design · React Development",
           description:
-            "A complete redesign and rebuild of Fabiana's professional website, focused on clarity, trust and accessibility. The original project evolved into a React-based experience with a more structured architecture, responsive navigation and a stronger visual identity.",
-          button: "Enter World →",
+            "Transforming a professional identity into a coherent digital experience through a complete redesign, clearer navigation and a React-based architecture.",
+          button: "Explore the world →",
         },
 
         3: {
           number: "World 03",
-          title: "Airbnb Clone",
-          version: "EPICODE · Team Project",
-          category: "Front-End Development · Build Week",
+          title: "Simplifying complexity.",
+          version: "React Website · Live",
+          category: "Web Design · React Development",
           description:
-            "A collaborative recreation of Airbnb built during EPICODE's Build Week. I contributed to interactive navigation, dynamic dropdowns, JavaScript logic and responsive interface components while working within a shared Git workflow.",
-          button: "View Source →",
+            "Organising different professional services into a clear digital journey, helping visitors understand complex subjects and find the information they need.",
+          button: "Explore the world →",
+        },
+
+        4: {
+          number: "World 04",
+          title: "Building together.",
+          version: "EPICODE · Team Project",
+          category: "Front-End Development · Teamwork",
+          description:
+            "Recreating a complex interface as part of a development team, combining technical skills, collaboration and a shared Git workflow.",
+          button: "Explore the world →",
         },
       },
     },
@@ -329,40 +339,50 @@ export const translations = {
       scroll: "Continua a esplorare",
     },
 
-    projects: {
+projects: {
       label: "PROGETTI SELEZIONATI",
       title: "I mondi che ho costruito.",
-      lead: "Ogni progetto è nato da una persona, un'esigenza e una sfida diversa. Questi sono i mondi digitali che hanno formato il mio modo di progettare e sviluppare.",
+      lead: "Ogni mondo nasce da una sfida. Esplora come ho trasformato esigenze diverse in esperienze digitali.",
 
       items: {
         1: {
           number: "Mondo 01",
-          title: "Jessica Di Flumeri",
+          title: "Progettare la fiducia.",
           version: "Versione 3.0 · Online",
-          category: "Sito per psicologa · Redesign UX/UI",
+          category: "UX/UI Design · Sviluppo Web",
           description:
-            "Il progetto che ha trasformato il mio modo di pensare alle esperienze digitali. Un redesign completo costruito intorno alla fiducia, alla chiarezza emotiva e a un'esperienza utente più consapevole.",
-          button: "Entra nel mondo →",
+            "Come può un'esperienza digitale comunicare fiducia ed empatia? Un progetto dedicato alla creazione di una presenza professionale accogliente, chiara e consapevole.",
+          button: "Esplora il mondo →",
         },
 
         2: {
           number: "Mondo 02",
-          title: "Fabiana Le Grottaglie",
+          title: "Dare forma a un'identità.",
           version: "Redesign React · Online",
-          category: "Sito per psicologa · Sviluppo React",
+          category: "UX/UI Design · Sviluppo React",
           description:
-            "Un redesign e una ricostruzione completa del sito professionale di Fabiana, con particolare attenzione a chiarezza, fiducia e accessibilità. Il progetto originale si è evoluto in un'esperienza React con un'architettura più strutturata, navigazione responsive e un'identità visiva più forte.",
-          button: "Entra nel mondo →",
+            "Trasformare un'identità professionale in un'esperienza digitale coerente attraverso un redesign completo, una navigazione più chiara e un'architettura React.",
+          button: "Esplora il mondo →",
         },
 
         3: {
           number: "Mondo 03",
-          title: "Airbnb Clone",
-          version: "EPICODE · Progetto di team",
-          category: "Sviluppo Front-End · Build Week",
+          title: "Semplificare la complessità.",
+          version: "Sito React · Online",
+          category: "Web Design · Sviluppo React",
           description:
-            "Una ricostruzione collaborativa di Airbnb realizzata durante una Build Week di EPICODE. Ho contribuito alla navigazione interattiva, ai dropdown dinamici, alla logica JavaScript e ai componenti responsive lavorando all'interno di un workflow Git condiviso.",
-          button: "Vedi il codice →",
+            "Organizzare servizi professionali differenti in un percorso digitale chiaro, aiutando i visitatori a comprendere argomenti complessi e trovare le informazioni necessarie.",
+          button: "Esplora il mondo →",
+        },
+
+        4: {
+          number: "Mondo 04",
+          title: "Costruire insieme.",
+          version: "EPICODE · Progetto di team",
+          category: "Sviluppo Front-End · Collaborazione",
+          description:
+            "Ricostruire un'interfaccia complessa lavorando in squadra, combinando competenze tecniche, collaborazione e un workflow Git condiviso.",
+          button: "Esplora il mondo →",
         },
       },
     },

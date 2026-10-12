@@ -22,6 +22,12 @@ function Projects() {
           {projects.map((project) => {
             const content = t.projects.items[project.id];
 
+            // Evita che una traduzione mancante blocchi il portfolio
+            if (!content) {
+              console.warn(`Traduzione mancante per il progetto ${project.id}`);
+              return null;
+            }
+
             return (
               <article
                 className={`world-card ${project.modifier}`}
@@ -32,6 +38,7 @@ function Projects() {
                     src={project.image}
                     alt={project.alt}
                     className="world-card__image"
+                    loading="lazy"
                   />
                 </div>
 
