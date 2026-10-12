@@ -7,6 +7,7 @@ export const projects = [
   {
     id: 1,
     slug: "progettare-la-fiducia",
+    accentColor: "#A3B9A8",
     client: "Jessica Di Flumeri",
     technologies: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
     image: jessicaV3,
@@ -26,6 +27,7 @@ export const projects = [
         subtitle: "Un'esperienza digitale costruita intorno alle persone.",
         industry: "Psicologia e psicoterapia",
         role: "UX/UI Design e sviluppo web",
+
         sections: [
           {
             type: "text",
@@ -85,6 +87,7 @@ export const projects = [
         subtitle: "A digital experience built around people.",
         industry: "Psychology and psychotherapy",
         role: "UX/UI Design and web development",
+
         sections: [
           {
             type: "text",
@@ -138,6 +141,7 @@ export const projects = [
   {
     id: 2,
     slug: "dare-forma-a-un-identita",
+    accentColor: "#83B8B5",
     client: "Fabiana Le Grottaglie",
     technologies: [
       "React",
@@ -165,6 +169,7 @@ export const projects = [
           "Trasformare una presenza digitale in un'identità riconoscibile.",
         industry: "Psicologia",
         role: "UX/UI Design e sviluppo React",
+
         sections: [
           {
             type: "text",
@@ -212,6 +217,7 @@ export const projects = [
         subtitle: "Turning a digital presence into a recognisable identity.",
         industry: "Psychology",
         role: "UX/UI Design and React development",
+
         sections: [
           {
             type: "text",
@@ -253,6 +259,7 @@ export const projects = [
   {
     id: 3,
     slug: "semplificare-la-complessita",
+    accentColor: "#9DBDD2",
     client: "Fulvio Martello",
     technologies: ["React", "Vite", "JavaScript", "CSS3", "Responsive Design"],
     image: fulvio,
@@ -272,6 +279,7 @@ export const projects = [
         subtitle: "Rendere semplici informazioni e servizi complessi.",
         industry: "Consulenza professionale",
         role: "Web Design e sviluppo React",
+
         sections: [
           {
             type: "text",
@@ -319,6 +327,7 @@ export const projects = [
         subtitle: "Making complex services easier to understand.",
         industry: "Professional consulting",
         role: "Web Design and React development",
+
         sections: [
           {
             type: "text",
@@ -360,6 +369,7 @@ export const projects = [
   {
     id: 4,
     slug: "costruire-insieme",
+    accentColor: "#D9B88F",
     client: "EPICODE · Team Project",
     technologies: [
       "HTML5",
@@ -387,6 +397,7 @@ export const projects = [
         subtitle: "Un progetto in cui il codice incontra la collaborazione.",
         industry: "Formazione e sviluppo web",
         role: "Sviluppo Front-End · Teamwork",
+
         sections: [
           {
             type: "text",
@@ -434,6 +445,7 @@ export const projects = [
         subtitle: "A project where code meets collaboration.",
         industry: "Education and web development",
         role: "Front-End Development · Teamwork",
+
         sections: [
           {
             type: "text",

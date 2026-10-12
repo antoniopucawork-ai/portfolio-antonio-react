@@ -5,32 +5,47 @@ import { useLanguage } from "../context/useLanguage";
 
 import "./WorldPage.css";
 
+// ========================================
+// TRADUZIONI INTERFACCIA
+// ========================================
+
+const labels = {
+  it: {
+    back: "← Torna ai mondi",
+    visit: "Visita il mondo ↗",
+    industry: "Settore",
+    role: "Il mio ruolo",
+    technologies: "Tecnologie",
+    notFound: "Mondo non trovato",
+  },
+
+  en: {
+    back: "← Back to worlds",
+    visit: "Visit the world ↗",
+    industry: "Industry",
+    role: "My role",
+    technologies: "Technologies",
+    notFound: "World not found",
+  },
+};
+
+// ========================================
+// WORLD PAGE
+// ========================================
+
 function WorldPage() {
   const { slug } = useParams();
   const { language } = useLanguage();
 
+  // Recupera il progetto attraverso lo slug
   const project = projects.find((item) => item.slug === slug);
 
-  const labels = {
-    it: {
-      back: "← Torna ai mondi",
-      visit: "Visita il progetto ↗",
-      industry: "Settore",
-      role: "Il mio ruolo",
-      technologies: "Tecnologie",
-      notFound: "Mondo non trovato",
-    },
-    en: {
-      back: "← Back to worlds",
-      visit: "Visit the project ↗",
-      industry: "Industry",
-      role: "My role",
-      technologies: "Technologies",
-      notFound: "World not found",
-    },
-  };
-
+  // Recupera le traduzioni dell'interfaccia
   const ui = labels[language] ?? labels.en;
+
+  // ========================================
+  // MONDO NON TROVATO
+  // ========================================
 
   if (!project) {
     return (
@@ -46,22 +61,36 @@ function WorldPage() {
     );
   }
 
+  // Recupera i contenuti nella lingua selezionata
   const content = project.content?.[language];
 
   if (!content) {
     return null;
   }
 
+  // ========================================
+  // PAGINA DEL MONDO
+  // ========================================
+
   return (
-    <main className="world-page">
+    <main
+      className="world-page"
+      style={{
+        "--world-accent": project.accentColor ?? "#9dbab0",
+      }}
+    >
       <div className="container">
-        {/* TORNA AI MONDI */}
+        {/* ========================================
+            NAVIGAZIONE
+        ======================================== */}
 
         <Link to="/#projects" className="world-page__back">
           {ui.back}
         </Link>
 
-        {/* INTRODUZIONE */}
+        {/* ========================================
+            INTRODUZIONE
+        ======================================== */}
 
         <header className="world-page__hero">
           <span className="world-page__number">{content.number}</span>
@@ -73,37 +102,31 @@ function WorldPage() {
           <p className="world-page__description">{content.description}</p>
         </header>
 
-        {/* INFORMAZIONI DEL PROGETTO */}
+        {/* ========================================
+            INFORMAZIONI DEL PROGETTO
+        ======================================== */}
 
         <div className="world-page__details">
-          <div>
+          <div className="world-page__detail">
             <span>{ui.industry}</span>
             <p>{content.industry}</p>
           </div>
 
-          <div>
+          <div className="world-page__detail">
             <span>{ui.role}</span>
             <p>{content.role}</p>
           </div>
 
-          <div>
+          <div className="world-page__detail">
             <span>{ui.technologies}</span>
 
             <p>{project.technologies.join(" · ")}</p>
           </div>
         </div>
 
-        {/* ANTEPRIMA DEL PROGETTO */}
-
-        <div className="world-page__preview">
-          <img
-            src={project.image}
-            alt={project.alt}
-            className="world-page__image"
-          />
-        </div>
-
-        {/* RACCONTO DEL PROGETTO */}
+        {/* ========================================
+            RACCONTO DEL PROGETTO
+        ======================================== */}
 
         <div className="world-page__story">
           {content.sections.map((section, index) => (
@@ -124,9 +147,24 @@ function WorldPage() {
           ))}
         </div>
 
-        {/* LINK AL PROGETTO */}
+        {/* ========================================
+            RISULTATO FINALE
+        ======================================== */}
 
-        <div className="world-page__footer">
+        <div className="world-page__result">
+          {/* ANTEPRIMA DEL PROGETTO */}
+
+          <div className="world-page__preview">
+            <img
+              src={project.image}
+              alt={project.alt}
+              className="world-page__image"
+              loading="lazy"
+            />
+          </div>
+
+          {/* LINK AL SITO */}
+
           <a
             href={project.url}
             target="_blank"
