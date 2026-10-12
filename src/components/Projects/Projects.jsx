@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom";
+
 import { projects } from "../../data/projects";
+import { useLanguage } from "../../context/useLanguage";
 
 import NextMission from "../NextMission/NextMission";
 
-import { useLanguage } from "../../context/useLanguage";
-
 function Projects() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <section id="projects" className="projects">
@@ -20,11 +21,12 @@ function Projects() {
 
         <div className="projects__worlds">
           {projects.map((project) => {
-            const content = t.projects.items[project.id];
+            const content = project.content?.[language];
 
-            // Evita che una traduzione mancante blocchi il portfolio
             if (!content) {
-              console.warn(`Traduzione mancante per il progetto ${project.id}`);
+              console.warn(
+                `Contenuti mancanti per il progetto ${project.slug} (${language})`,
+              );
               return null;
             }
 
@@ -62,14 +64,12 @@ function Projects() {
                   </div>
 
                   <div className="world-card__actions">
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      to={`/world/${project.slug}`}
                       className="world-card__button"
                     >
                       {content.button}
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </article>

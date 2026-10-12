@@ -79,52 +79,10 @@ export const translations = {
       scroll: "Keep exploring",
     },
 
-projects: {
+    projects: {
       label: "SELECTED PROJECTS",
       title: "Worlds I've built.",
       lead: "Every world began with a challenge. Explore how I transformed different needs into meaningful digital experiences.",
-
-      items: {
-        1: {
-          number: "World 01",
-          title: "Designing trust.",
-          version: "Version 3.0 · Live",
-          category: "UX/UI Design · Web Development",
-          description:
-            "How can a digital experience communicate trust and empathy? A project focused on creating a welcoming, clear and thoughtful professional presence.",
-          button: "Explore the world →",
-        },
-
-        2: {
-          number: "World 02",
-          title: "Shaping an identity.",
-          version: "React Redesign · Live",
-          category: "UX/UI Design · React Development",
-          description:
-            "Transforming a professional identity into a coherent digital experience through a complete redesign, clearer navigation and a React-based architecture.",
-          button: "Explore the world →",
-        },
-
-        3: {
-          number: "World 03",
-          title: "Simplifying complexity.",
-          version: "React Website · Live",
-          category: "Web Design · React Development",
-          description:
-            "Organising different professional services into a clear digital journey, helping visitors understand complex subjects and find the information they need.",
-          button: "Explore the world →",
-        },
-
-        4: {
-          number: "World 04",
-          title: "Building together.",
-          version: "EPICODE · Team Project",
-          category: "Front-End Development · Teamwork",
-          description:
-            "Recreating a complex interface as part of a development team, combining technical skills, collaboration and a shared Git workflow.",
-          button: "Explore the world →",
-        },
-      },
     },
 
     nextMission: {
@@ -339,52 +297,10 @@ projects: {
       scroll: "Continua a esplorare",
     },
 
-projects: {
+    projects: {
       label: "PROGETTI SELEZIONATI",
       title: "I mondi che ho costruito.",
       lead: "Ogni mondo nasce da una sfida. Esplora come ho trasformato esigenze diverse in esperienze digitali.",
-
-      items: {
-        1: {
-          number: "Mondo 01",
-          title: "Progettare la fiducia.",
-          version: "Versione 3.0 · Online",
-          category: "UX/UI Design · Sviluppo Web",
-          description:
-            "Come può un'esperienza digitale comunicare fiducia ed empatia? Un progetto dedicato alla creazione di una presenza professionale accogliente, chiara e consapevole.",
-          button: "Esplora il mondo →",
-        },
-
-        2: {
-          number: "Mondo 02",
-          title: "Dare forma a un'identità.",
-          version: "Redesign React · Online",
-          category: "UX/UI Design · Sviluppo React",
-          description:
-            "Trasformare un'identità professionale in un'esperienza digitale coerente attraverso un redesign completo, una navigazione più chiara e un'architettura React.",
-          button: "Esplora il mondo →",
-        },
-
-        3: {
-          number: "Mondo 03",
-          title: "Semplificare la complessità.",
-          version: "Sito React · Online",
-          category: "Web Design · Sviluppo React",
-          description:
-            "Organizzare servizi professionali differenti in un percorso digitale chiaro, aiutando i visitatori a comprendere argomenti complessi e trovare le informazioni necessarie.",
-          button: "Esplora il mondo →",
-        },
-
-        4: {
-          number: "Mondo 04",
-          title: "Costruire insieme.",
-          version: "EPICODE · Progetto di team",
-          category: "Sviluppo Front-End · Collaborazione",
-          description:
-            "Ricostruire un'interfaccia complessa lavorando in squadra, combinando competenze tecniche, collaborazione e un workflow Git condiviso.",
-          button: "Esplora il mondo →",
-        },
-      },
     },
 
     nextMission: {

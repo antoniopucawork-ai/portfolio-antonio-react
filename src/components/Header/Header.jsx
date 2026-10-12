@@ -6,6 +6,7 @@ import {
   useState,
 } from "react";
 
+import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../../context/useLanguage";
 
 const navItems = [
@@ -33,14 +34,20 @@ const navItems = [
 
 function Header() {
   const [activeHref, setActiveHref] = useState("#about");
-
   const [menuOpen, setMenuOpen] = useState(false);
 
   const { language, setLanguage, t } = useLanguage();
+  const { pathname } = useLocation();
+
+  const isHomePage = pathname === "/";
 
   const navWrapperRef = useRef(null);
   const polarisRef = useRef(null);
   const linksRef = useRef({});
+
+  /* ========================================
+     POLARIS
+  ======================================== */
 
   const movePolaris = useCallback((link) => {
     const polaris = polarisRef.current;
@@ -51,7 +58,6 @@ function Header() {
     }
 
     const wrapperRect = navWrapper.getBoundingClientRect();
-
     const linkRect = link.getBoundingClientRect();
 
     const centerX = linkRect.left - wrapperRect.left + linkRect.width / 2;
@@ -61,6 +67,13 @@ function Header() {
   }, []);
 
   const movePolarisToActive = useCallback(() => {
+    if (!isHomePage) {
+      if (polarisRef.current) {
+        polarisRef.current.style.opacity = "0";
+      }
+      return;
+    }
+
     const activeLink = linksRef.current[activeHref];
 
     if (!activeLink) {
@@ -68,16 +81,28 @@ function Header() {
     }
 
     movePolaris(activeLink);
-  }, [activeHref, movePolaris]);
+  }, [activeHref, isHomePage, movePolaris]);
 
   useLayoutEffect(() => {
     movePolarisToActive();
   }, [movePolarisToActive, language]);
 
+  /* ========================================
+     ACTIVE SECTION OBSERVER
+  ======================================== */
+
   useEffect(() => {
+    if (!isHomePage) {
+      return;
+    }
+
     const observedSections = navItems
       .map((item) => document.querySelector(item.href))
       .filter(Boolean);
+
+    if (observedSections.length === 0) {
+      return;
+    }
 
     const sectionObserver = new IntersectionObserver(
       (entries) => {
@@ -102,7 +127,11 @@ function Header() {
     return () => {
       sectionObserver.disconnect();
     };
-  }, []);
+  }, [isHomePage]);
+
+  /* ========================================
+     RESIZE
+  ======================================== */
 
   useEffect(() => {
     const handleResize = () => {
@@ -116,7 +145,15 @@ function Header() {
     };
   }, [movePolarisToActive]);
 
+  /* ========================================
+     NAVIGATION
+  ======================================== */
+
   const handleMouseEnter = (href) => {
+    if (!isHomePage) {
+      return;
+    }
+
     const link = linksRef.current[href];
 
     if (!link) {
@@ -139,7 +176,15 @@ function Header() {
     setMenuOpen((current) => !current);
   };
 
+  /* ========================================
+     LANGUAGE
+  ======================================== */
+
   const changeLanguage = (newLanguage) => {
+    if (newLanguage === language) {
+      return;
+    }
+
     setLanguage(newLanguage);
 
     requestAnimationFrame(() => {
@@ -149,15 +194,28 @@ function Header() {
     });
   };
 
+  /* ========================================
+     RENDER
+  ======================================== */
+
   return (
     <header className="header">
       <div className="container">
         <nav className={`navbar ${menuOpen ? "menu-open" : ""}`}>
-          <a href="#" className="logo" aria-label="Antonio Puca — Home">
+          {/* LOGO */}
+
+          <Link
+            to="/"
+            className="logo"
+            aria-label="Antonio Puca — Home"
+            onClick={() => setMenuOpen(false)}
+          >
             <span className="logo__accent">&lt;</span>
             Antonio Puca
             <span className="logo__accent">/&gt;</span>
-          </a>
+          </Link>
+
+          {/* MOBILE MENU BUTTON */}
 
           <button
             className="menu-toggle"
@@ -170,41 +228,51 @@ function Header() {
             onClick={toggleMenu}
           >
             <span className="menu-symbol menu-symbol--one"></span>
-
             <span className="menu-symbol menu-symbol--two"></span>
-
             <span className="menu-symbol menu-symbol--three"></span>
           </button>
+
+          {/* NAVIGATION */}
 
           <div
             className="nav-wrapper"
             ref={navWrapperRef}
             onMouseLeave={handleMouseLeave}
           >
-            <span className="polaris" ref={polarisRef}></span>
+            <span
+              className="polaris"
+              ref={polarisRef}
+              aria-hidden="true"
+            ></span>
 
             <ul className="nav" id="universe-nav">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    ref={(element) => {
-                      if (element) {
-                        linksRef.current[item.href] = element;
-                      }
-                    }}
-                    className={`nav-link ${
-                      activeHref === item.href ? "active" : ""
-                    }`}
-                    onMouseEnter={() => handleMouseEnter(item.href)}
-                    onClick={() => handleNavClick(item.href)}
-                  >
-                    {t.header[item.key]}
-                  </a>
-                </li>
-              ))}
+              {navItems.map((item) => {
+                const destination = isHomePage ? item.href : `/${item.href}`;
+
+                return (
+                  <li key={item.href}>
+                    <a
+                      href={destination}
+                      ref={(element) => {
+                        if (element) {
+                          linksRef.current[item.href] = element;
+                        }
+                      }}
+                      className={`nav-link ${
+                        isHomePage && activeHref === item.href ? "active" : ""
+                      }`}
+                      onMouseEnter={() => handleMouseEnter(item.href)}
+                      onClick={() => handleNavClick(item.href)}
+                    >
+                      {t.header[item.key]}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
+
+          {/* LANGUAGE SWITCHER */}
 
           <div
             className={`language-switcher ${
@@ -212,6 +280,7 @@ function Header() {
                 ? "language-switcher--it"
                 : "language-switcher--en"
             }`}
+            role="group"
             aria-label="Language selector"
           >
             <span

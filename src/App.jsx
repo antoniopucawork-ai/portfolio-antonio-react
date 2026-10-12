@@ -10,6 +10,7 @@ import Projects from "./components/Projects/Projects";
 import Horizon from "./components/Horizon/Horizon";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
+import WorldPage from "./pages/WorldPage";
 
 import MissionLogPage from "./pages/MissionLogPage";
 
@@ -83,6 +84,16 @@ function App() {
         <Route path="/" element={<HomePage />} />
 
         <Route path="/mission-log" element={<MissionLogPage />} />
+        <Route
+          path="/world/:slug"
+          element={
+            <>
+              <Header />
+
+              <WorldPage />
+            </>
+          }
+        />
       </Routes>
     </>
   );
