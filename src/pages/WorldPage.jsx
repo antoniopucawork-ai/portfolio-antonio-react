@@ -1,9 +1,66 @@
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { projects } from "../data/projects";
 import { useLanguage } from "../context/useLanguage";
 
 import "./WorldPage.css";
+
+// ========================================
+// CONFIGURAZIONE SEO
+// ========================================
+
+const SITE_URL = "https://antonio-puca-portfolio.netlify.app";
+
+const HOME_SEO = {
+  title: "Antonio Puca | Web Developer",
+  description:
+    "Sono Antonio Puca, web developer. Progetto e sviluppo siti web moderni, responsive e applicazioni React, con attenzione al design e all'esperienza utente.",
+  ogDescription:
+    "Sviluppo siti web e applicazioni React, unendo tecnologia, design ed esperienza utente. Scopri i miei progetti.",
+};
+
+// Aggiorna o crea un meta tag
+function updateMeta(attribute, name, content) {
+  let meta = document.querySelector(`meta[${attribute}="${name}"]`);
+
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.setAttribute(attribute, name);
+    document.head.appendChild(meta);
+  }
+
+  meta.setAttribute("content", content);
+}
+
+// Aggiorna il canonical
+function updateCanonical(url) {
+  let canonical = document.querySelector('link[rel="canonical"]');
+
+  if (!canonical) {
+    canonical = document.createElement("link");
+    canonical.setAttribute("rel", "canonical");
+    document.head.appendChild(canonical);
+  }
+
+  canonical.setAttribute("href", url);
+}
+
+// Applica i metadati SEO
+function applySEO({ title, description, url, ogDescription }) {
+  document.title = title;
+
+  updateMeta("name", "description", description);
+
+  updateMeta("property", "og:title", title);
+  updateMeta("property", "og:description", ogDescription || description);
+  updateMeta("property", "og:url", url);
+
+  updateMeta("name", "twitter:title", title);
+  updateMeta("name", "twitter:description", ogDescription || description);
+
+  updateCanonical(url);
+}
 
 // ========================================
 // TRADUZIONI INTERFACCIA
@@ -43,11 +100,59 @@ function WorldPage() {
   // Recupera le traduzioni dell'interfaccia
   const ui = labels[language] ?? labels.en;
 
+  // Recupera i contenuti nella lingua selezionata
+  const content = project?.content?.[language] ?? project?.content?.it;
+
+  // ========================================
+  // SEO DINAMICA
+  // ========================================
+
+  useEffect(() => {
+    if (!project || !content) {
+      document.title = "Progetto non trovato | Antonio Puca";
+
+      updateMeta("name", "robots", "noindex, follow");
+
+      return () => {
+        updateMeta("name", "robots", "index, follow");
+
+        applySEO({
+          title: HOME_SEO.title,
+          description: HOME_SEO.description,
+          ogDescription: HOME_SEO.ogDescription,
+          url: `${SITE_URL}/`,
+        });
+      };
+    }
+
+    const pageUrl = `${SITE_URL}/world/${project.slug}`;
+
+    applySEO({
+      title: `${content.title} | Antonio Puca`,
+      description: content.description,
+      ogDescription: content.description,
+      url: pageUrl,
+    });
+
+    updateMeta("name", "robots", "index, follow");
+
+    // Ripristina i metadati della homepage
+    // quando si esce dalla pagina del progetto.
+    return () => {
+      applySEO({
+        title: HOME_SEO.title,
+        description: HOME_SEO.description,
+        ogDescription: HOME_SEO.ogDescription,
+        url: `${SITE_URL}/`,
+      });
+    };
+  }, [project, content]);
+
   // ========================================
   // MONDO NON TROVATO
   // ========================================
 
-  if (!project) {
+  if (!project || !content) {
     return (
       <main className="world-page">
         <div className="container">
@@ -59,13 +164,6 @@ function WorldPage() {
         </div>
       </main>
     );
-  }
-
-  // Recupera i contenuti nella lingua selezionata
-  const content = project.content?.[language];
-
-  if (!content) {
-    return null;
   }
 
   // ========================================
@@ -119,7 +217,6 @@ function WorldPage() {
 
           <div className="world-page__detail">
             <span>{ui.technologies}</span>
-
             <p>{project.technologies.join(" · ")}</p>
           </div>
         </div>
